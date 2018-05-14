@@ -55,3 +55,19 @@ func TestParseJobList(t *testing.T) {
 		fmt.Println(v.ID, v.Name, v.CreationUser, v.UpdateUser)
 	}
 }
+
+func TestCreateLink(t *testing.T) {
+	jsonStr, err := CreateMySQLLink("yiplatform",
+		"test_link",
+		"generic-jdbc-connector",
+		"com.mysql.jdbc.Driver",
+		"jdbc:mysql://127.0.0.1:3306/yiplatform",
+		"root",
+		"zyqqv587^^")
+	if err != nil {
+		t.Error("Jobs 解析失败。", err)
+		return
+	}
+	fmt.Println("POST DATA:")
+	fmt.Println(jsonStr)
+}
